@@ -29,6 +29,14 @@ class Druzyna extends Controller
                                     'id' => $id,'druzyny' =>$daneDruzyna[0], 'ligi' => $daneLiga, 'url' => $this->url ]);
     }
 
+    public function createModalForm($id){
+        $daneDruzyna = $this->model->selectOneById($id);
+        $daneLiga = $this->liga->showAll();
+
+         return $this->twig->render( 'Druzyna/formDruzynaUpdateModal.html.twig', [
+                                    'id' => $id,'druzyny' =>$daneDruzyna[0], 'ligi' => $daneLiga, 'url' => $this->url ]);
+    }
+
     // do INSERTA //
     public function insertForm(){
         $daneLiga = $this->liga->showAll();

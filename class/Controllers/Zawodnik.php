@@ -33,6 +33,22 @@ class Zawodnik extends Controller
 
     }
 
+    public function createModalForm($id){
+
+        $daneZawodnik = $this->model->selectOneById($id);
+        $danePozycja = $this->pozycja->showAll();
+        $daneDruzyna = $this->druzyna->showAll();
+
+         return $this->twig->render('Zawodnik/formZawodnikUpdateModal.html.twig', [
+                                    'id' => $id,
+                                    'zawodnicy' =>$daneZawodnik[0],
+                                    'url' => $this->url,
+                                    'pozycje' =>  $danePozycja,
+                                    'druzyny' => $daneDruzyna,
+                                    'prevUrl' => $_SERVER['HTTP_REFERER'] ] );
+
+    }
+
     public function insertForm(){
         $danePozycja = $this->pozycja->showAll();
         $daneDruzyna = $this->druzyna->showAll();

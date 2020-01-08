@@ -1,0 +1,36 @@
+{% extends 'templateModal.html.twig' %}
+
+{% block modal_title %}Edycja drużyny{% endblock %}
+{% block modal_body %}
+<form id="signupForm" action="{{ url }}druzyna/update" method="POST" enctype="multipart/form-data">
+
+    <div class="form-group">
+       <img src="{{ url }}{{ druzyny.logo }}" id="uploadPreview" style="width: 100px; height: 120px;" /><br/><br/>
+       <label for="logo">Wybierz logotyp</label>
+       <input type="file" class="form-control" id="logo" name="logo" accept="image/*" onchange="PreviewImage();">
+    </div>
+    <div class="form-group">
+      <label for="nazwa">Nazwa drużyny</label>
+      <input type="text" class="form-control" id="nazwa" name="nazwa" value="{{druzyny.nazwa}}">
+    </div>
+    <div class="form-group">
+      <label for="id_liga">Wybierz ligę</label>
+        <select name="id_liga" class="form-control">
+            <option value="">--Wybierz ligę--</option>
+            {% for liga in ligi %}
+              {% if liga.id_liga == druzyny.id_liga %}
+                  <option value={{liga.id_liga}} selected>"{{liga.nazwa}}"</option>
+              {% else %}
+                  <option value={{liga.id_liga}}>"{{liga.nazwa}}"</option>
+              {% endif %}
+            {%  endfor %}
+        </select>
+    </div>
+
+    <input type="hidden" id="logoBezZmian" name="logoBezZmian" value="{{ druzyny.logo }}" />
+
+    <input type="hidden" id="id_druzyna" name="id_druzyna" value={{id}}>
+    <button type="submit" class="btn btn-info">Edytuj dane</button>
+
+  </form>
+{% endblock %}

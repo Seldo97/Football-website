@@ -23,6 +23,7 @@
           self::$router->map('GET','druzyna/formularzUpdate/[i:id]', array('controller' =>'Druzyna', 'action' => 'createForm'), 'druzynaFormularzUpdate');
           self::$router->map('POST','druzyna/update', array('controller' =>'Druzyna', 'action' => 'update'), 'druzynaUpdate');
           self::$router->map('GET','druzyna/usun/[i:id]', array('controller' =>'Druzyna', 'action' => 'delete'), 'druzynaUsun');
+          self::$router->map('GET','druzyna/formularzUpdateModal/[i:id]', array('controller' =>'Druzyna', 'action' => 'createModalForm'), 'druzynaFormularzUpdateModal');
 
           //Tabela Zawodnik
           self::$router->map('GET','zawodnikTabela', array('controller' =>'Zawodnik', 'action' => 'showView'), 'zawodnikTabela');
@@ -33,6 +34,7 @@
           self::$router->map('GET','zawodnik/usun/[i:id]', array('controller' =>'Zawodnik', 'action' => 'delete'), 'zawodnikUsun');
           self::$router->map('GET','druzyna/sklad/[i:id]', array('controller' =>'Zawodnik', 'action' => 'showSklad'), 'druzynaSklad');
           self::$router->map('GET','druzyna/sklad/formularzDodaj/[i:id]', array('controller' =>'Zawodnik', 'action' => 'dodajDoSkladu'), 'druzynaDodajZawodnika');
+          self::$router->map('GET','zawodnik/formularzUpdateModal/[i:id]', array('controller' =>'Zawodnik', 'action' => 'createModalForm'), 'zawodnikFormularzUpdateModal');
 
           //Tabela Mecz
           self::$router->map('GET','meczTabela', array('controller' =>'Mecz', 'action' => 'showView'), 'meczTabela');
@@ -43,6 +45,7 @@
           self::$router->map('GET','mecz/formularzUpdate/[i:id]', array('controller' =>'Mecz', 'action' => 'createForm'), 'meczFormularzUpdate');
           self::$router->map('POST','mecz/update', array('controller' =>'Mecz', 'action' => 'update'), 'meczUpdate');
           self::$router->map('GET','mecz/usun/[i:id]', array('controller' =>'Mecz', 'action' => 'delete'), 'meczaUsun');
+          self::$router->map('GET','mecz/formularzUpdateModal/[i:id]', array('controller' =>'Mecz', 'action' => 'createModalForm'), 'meczFormularzUpdateModal');
 
         }
         return self::$router;

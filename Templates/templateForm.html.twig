@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{{ url }}css/cssForm.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+{% endblock %}
+
 {% block title %}
     Kluby Piłkarskie
 {% endblock %}
 
 {% block header %}
     <h2>Formularz</h2>
-{% endblock %}
-
-{% block css %}
-    <link rel="stylesheet" type="text/css" href="{{ url }}css/cssForm.css" />
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 {% endblock %}
 
 {% block main %}

@@ -1,0 +1,39 @@
+<!-- /Dane dostawcy -->
+<!-- PHP Ajax Update MySQL Data Through Bootstrap Modal -->
+
+{% block css %}
+
+    <link rel="stylesheet" type="text/css" href="{{ url }}css/cssForm.css" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+{% endblock %}
+
+{% block formModal %}
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">{% block modal_title %}Tytuł okna{% endblock %}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            {% block modal_body %}
+                Formularz
+            {% endblock %}
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.20/datatables.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="{{ url }}js/jquery.validate.js"></script>
+    <script src="{{ url }}js/additional-methods.js"></script>
+    <script type="text/javascript" src="{{ url }}js/validate.js"></script>
+    <script type="text/javascript" src="{{ url }}js/imageJS.js"></script>
+{% endblock %}

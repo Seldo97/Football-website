@@ -38,7 +38,8 @@
 
           <td class="text-right">
             <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                <a class="btn btn-success" href="{{ url }}zawodnik/formularzUpdate/{{Zawodnik.id_zawodnik}}" role="button">&#8651;</a>
+                <!-- <a class="btn btn-success" href="{{ url }}zawodnik/formularzUpdate/{{Zawodnik.id_zawodnik}}" role="button">&#8651;</a> -->
+                <button class="btn btn-success edit_data" url="{{url}}zawodnik/formularzUpdateModal/{{Zawodnik.id_zawodnik}}" role="button">&#8651;</button>
                 <a class="btn btn-danger" href="{{ url }}zawodnik/usun/{{Zawodnik.id_zawodnik}}" role="button">&#9850;</a>
             </div>
           </td>

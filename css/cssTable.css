@@ -9,3 +9,6 @@ a:hover {
 td:not(:nth-child(0)) {
     vertical-align: middle;
 }
+.edit_data{
+    color: white;
+}

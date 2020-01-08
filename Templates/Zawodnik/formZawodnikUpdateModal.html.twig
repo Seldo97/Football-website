@@ -1,0 +1,64 @@
+{% extends 'templateModal.html.twig' %}
+
+{% block modal_title %}Edycja Zawodnika{% endblock %}
+{% block modal_body %}
+<form id="signupForm" action="{{ url }}zawodnik/update" method="POST">
+
+  <div class="form-group">
+    <label for="imie">Imie</label>
+    <input type="text" class="form-control" id="imie" name="imie" value="{{zawodnicy.imie}}" maxlength="50">
+  </div>
+  <div class="form-group">
+    <label for="nazwisko">Nazwisko</label>
+    <input type="text" class="form-control" id="nazwisko" name="nazwisko" value="{{zawodnicy.nazwisko}}" maxlength="50">
+  </div>
+  <div class="form-group">
+    <label for="data_urodzenia">Data urodzenia</label>
+    <input type="text" class="form-control" id="data_urodzenia" name="data_urodzenia" value={{zawodnicy.data_urodzenia}} maxlength="10" placeholder="yyyy-mm-dd">
+  </div>
+  <div class="form-group">
+    <label for="wzrost">Wzrost (cm)</label>
+    <input type="text" class="form-control" id="wzrost" name="wzrost" value={{zawodnicy.wzrost}}>
+  </div>
+  <div class="form-group">
+    <label for="narodowosc">Narodowość</label>
+    <input type="text" class="form-control" id="narodowosc" name="narodowosc" value={{zawodnicy.narodowosc}}>
+  </div>
+  <div class="form-group">
+    <label for="do_kiedy_kontrakt">Kontrakt do</label>
+    <input type="text" class="form-control" id="do_kiedy_kontrakt" name="do_kiedy_kontrakt" value={{zawodnicy.do_kiedy_kontrakt}} maxlength="10" placeholder="yyyy-mm-dd">
+  </div>
+  <div class="form-group">
+    <label for="id_druzyna">Wybierz drużynę</label>
+      <select name="id_druzyna" class="form-control">
+          <option value="">--Wybierz drużynę--</option>
+          {% for druzyna in druzyny %}
+            {% if zawodnicy.id_druzyna == druzyna.id_druzyna %}
+                <option value={{druzyna.id_druzyna}} selected>"{{druzyna.nazwa}}"</option>
+            {% else %}
+                <option value={{druzyna.id_druzyna}} >"{{druzyna.nazwa}}"</option>
+            {% endif %}
+          {%  endfor %}
+      </select>
+  </div>
+  <div class="form-group">
+    <label for="id_pozycja">Wybierz pozycję</label>
+      <select name="id_pozycja" class="form-control">
+          <option value="">--Wybierz pozycję--</option>
+          {% for pozycja in pozycje %}
+            {% if zawodnicy.id_pozycja == pozycja.id_pozycja %}
+                <option value={{pozycja.id_pozycja}} selected>"{{pozycja.nazwa}}"</option>
+            {% else %}
+                <option value={{pozycja.id_pozycja}}>"{{pozycja.nazwa}}"</option>
+            {% endif %}
+          {%  endfor %}
+      </select>
+  </div>
+  <br/>
+  <input type="hidden" id="id_zawodnik" name="id_zawodnik" value={{id}}>
+  <input type="hidden" id="prevUrl" name="prevUrl" value="{{ prevUrl }}" />
+
+  <button type="submit" class="btn btn-info">Edytuj dane</button>
+
+</form>
+{% endblock %}

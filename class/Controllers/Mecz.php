@@ -27,6 +27,19 @@ class Mecz extends Controller
                                     'prevUrl' => $_SERVER['HTTP_REFERER']]);
 
     }
+
+    public function createModalForm($id){
+        $daneMecz = $this->model->selectOneById($id);
+        $daneDruzyna = $this->druzyna->showAll();
+
+         return $this->twig->render( 'Mecz/formMeczUpdateModal.html.twig', [
+                                   'id' => $id,'mecze' =>$daneMecz[0],
+                                   'druzyny' => $daneDruzyna,
+                                   'url' => $this->url,
+                                   'prevUrl' => $_SERVER['HTTP_REFERER']]);
+
+   }
+
     // do INSERTA //
     public function insertForm(){
         $daneDruzyna = $this->druzyna->showAll();
