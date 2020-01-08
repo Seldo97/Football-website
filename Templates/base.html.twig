@@ -1,0 +1,61 @@
+{# templates/base.html.twig #}
+<!DOCTYPE html>
+<html>
+    <head>
+    {% block head %}
+        <meta charset="UTF-8">
+        <title>{% block title %}Zawaawansowane programowanie serwisow interentowych{% endblock %}</title>
+
+        <!-- JS i CSS niezbędny do działania strony -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.20/datatables.min.css"/>
+        <link rel="stylesheet" type="text/css" href="{{ url }}/css/cssGlobal.css"/>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.20/datatables.min.js"></script>
+        <script type="text/javascript" src="{{ url }}js/siteEffects.js"></script>
+        <!-- ______________________________________ -->
+
+        <!-- Dodatkowy JS -->
+        {% block js %}
+            <!-- Dodatkowy JS -->
+            <!--<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>-->
+        {% endblock %}
+
+        <!-- Dodatkowy CSS -->
+        {% block css %}
+            <!-- Dodatkowy CSS -->
+        {% endblock %}
+
+    {% endblock %}
+    </head>
+
+    <body style="background-image: url('{{ url }}images/bg3.jpg')">
+
+        {% include 'banner.html.twig' %}
+        {% include 'navBar.html.twig' %}
+
+        <div class="container pt-4 pb-4" style='display:none;'>
+
+            <header class="mb-1">
+            {% block header %}
+
+                <h2>To jest nagłówek</h2>
+
+            {% endblock %}
+            </header>
+
+            <div class="row" style='min-height: 66vh;'>
+                <main class="col-12 mt-1">
+                {% block main %}
+
+                    <p>Główna zawartość strony.</p>
+
+                {% endblock %}
+                </main>
+            </div>
+
+        </div>
+
+    </body>
+
+    {% include 'footer.html.twig' %}
+
+</html>

@@ -1,0 +1,3 @@
+Kluby Pi³karskie - projekt ma na celu umo¿liwiæ podgl¹d nadchodz¹cych oraz rozegranych meczy pomiêdzy dru¿ynami oraz ich wyniki. U¿ytkownik(oraz goœæ) ma mo¿liwoœæ równie¿ podgl¹du szczegó³ów danej dru¿yny takich jak liga, w której dru¿yna siê znajduje oraz jej sk³adu zawodników. U¿ytkownik ma mo¿liwoœæ segregowania oraz filtrowania tabel.
+
+Zalogowany administrator ma mo¿liwoœæ wprowadzania wyników do rozegranych meczy, dodawania nowych meczy, dodawania, edytowania oraz kasowania dru¿yn oraz zawodników.

@@ -1,0 +1,16 @@
+{
+    "autoload": {
+        "psr-4": {
+                    "":"class/",
+                    "Config\\": "config/",
+                    "Messages\\": "messages/"
+		    }
+    },
+    "require": {
+        "kint-php/kint": "dev-master",
+        "twbs/bootstrap": "^4.3",
+        "twig/twig": "2.0",
+        "twig/extensions": "^1.5",
+        "altorouter/altorouter": "1.1.0"
+    }
+}

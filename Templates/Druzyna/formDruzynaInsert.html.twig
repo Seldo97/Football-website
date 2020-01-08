@@ -1,0 +1,53 @@
+{% extends 'templateForm.html.twig' %}
+
+{% block title %}
+    Tabela Druzyna
+{% endblock %}
+
+{% block header %}
+    <h2>Dodawanie drużyny</h2>
+{% endblock %}
+
+    {% block form %}
+
+    <form id="signupForm" action="{{ url }}druzyna/insert" method="POST" enctype="multipart/form-data">
+
+      <div class="form-group">
+         <img src="{{ url }}images/braklogo.png" id="uploadPreview" style="width: 100px; height: 120px;" /><br/><br/>
+         <label for="logo">Wybierz logotyp</label>
+         <input type="file" class="form-control" id="logo" name="logo" accept="image/*" onchange="PreviewImage();">
+      </div>
+      <div class="form-group">
+        <label for="nazwa">Nazwa drużyny</label>
+        <input type="text" class="form-control" id="nazwa" name="nazwa" >
+      </div>
+      <div class="form-group">
+        <label for="id_liga">Wybierz ligę</label>
+          <select name="id_liga" class="form-control">
+              <option value="">--Wybierz ligę--</option>
+              {% for liga in ligi %}
+                <option value={{liga.id_liga}}>"{{liga.nazwa}}"</option>
+              {%  endfor %}
+          </select>
+      </div>
+      <br/>
+      <button type="submit" class="btn btn-info">Dodaj</button>
+
+    </form>
+
+
+
+    <!-- <script type="text/javascript">
+
+        function PreviewImage() {
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("logo").files[0]);
+
+            oFReader.onload = function (oFREvent) {
+                document.getElementById("uploadPreview").src = oFREvent.target.result;
+            };
+        };
+
+    </script> -->
+
+    {% endblock %}

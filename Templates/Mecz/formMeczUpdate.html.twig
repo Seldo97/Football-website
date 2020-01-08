@@ -1,0 +1,78 @@
+{% extends 'templateForm.html.twig' %}
+
+{% block title %}Tabela Mecz{% endblock %}
+
+{% block header %}
+    <h2>Edycja meczu</h2>
+{% endblock %}
+
+{% block form %}
+
+    <form id="signupForm" action="{{ url }}mecz/update" method="POST">
+
+        <div class="form-group">
+          <label for="druzyna_gospodarz">Wybierz drużynę gospodarza</label>
+            <select name="druzyna_gospodarz" class="form-control">
+                <option value="">--Wybierz drużynę--</option>
+                {% for druzyna in druzyny %}
+                    {% if druzyna.id_druzyna == mecze.druzyna_gospodarz %}
+                        <option value={{druzyna.id_druzyna}} selected>"{{druzyna.nazwa}}"</option>
+                    {% else %}
+                        <option value={{druzyna.id_druzyna}} >"{{druzyna.nazwa}}"</option>
+                    {% endif %}
+                {%  endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+          <label for="druzyna_gosc">Wybierz drużynę gościa</label>
+            <select name="druzyna_gosc" class="form-control">
+                <option value="">--Wybierz drużynę--</option>
+                {% for druzyna in druzyny %}
+                    {% if druzyna.id_druzyna == mecze.druzyna_gosc %}
+                        <option value={{druzyna.id_druzyna}} selected>"{{druzyna.nazwa}}"</option>
+                    {% else %}
+                        <option value={{druzyna.id_druzyna}}>"{{druzyna.nazwa}}"</option>
+                    {% endif %}
+                {%  endfor %}
+            </select>
+        </div>
+
+      <div class="form-group">
+        <label for="data">Data spotkania</label>
+        <input type="text" class="form-control" id="data" name="data" value="{{ mecze.data }}" maxlength="10" placeholder="yyyy-mm-dd">
+      </div>
+      <div class="form-group">
+        <label for="godzina">Godzina ropoczęcia</label>
+        <input type="time" class="form-control" id="godzina" name="godzina" value="{{ mecze.godzina }}">
+      </div>
+      <div class="custom-control custom-checkbox my-1 mr-sm-2">
+          {% if mecze.rozegrany == 1 %}
+            <input type="checkbox" class="custom-control-input" id="rozegrany" name="rozegrany" value="1" checked>
+          {% else %}
+            <input type="checkbox" class="custom-control-input" id="rozegrany" name="rozegrany" value="1" >
+          {% endif %}
+          <label class="custom-control-label" for="rozegrany">Rozegrany</label>
+      </div>
+      <input type="hidden" id="id_mecz" name="id_mecz" value={{id}}>
+      {% if mecze.rozegrany == 1 %}
+        <div id="wynik" class="mt-2">
+      {% else %}
+        <div id="wynik" style="display:none" class="mt-2">
+      {% endif %}
+          <div class="form-group">
+            <label for="wynik_gospodarz">Wynik gospodarz</label>
+            <input type="number" class="form-control" id="wynik_gospodarz" name="wynik_gospodarz" min="0" max="100" value="{{ mecze.wynik_gospodarz }}">
+          </div>
+          <div class="form-group">
+            <label for="wynik_gosc">Wynik gość</label>
+            <input type="number" class="form-control" id="wynik_gosc" name="wynik_gosc" min="0" max="100" value="{{ mecze.wynik_gosc }}">
+          </div>
+      </div>
+
+      <br/>
+      <button type="submit" class="btn btn-info">Dodaj</button>
+
+      <input type="hidden" id="prevUrl" name="prevUrl" value="{{ prevUrl }}" />
+    </form>
+
+{% endblock %}

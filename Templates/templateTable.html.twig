@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Kluby Piłkarskie
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="{{ url }}js/dataTables.min.js"></script>
+    <!-- <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.10.20/api/fnFilterClear.js"></script> -->
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{{ url }}css/cssTable.css" />
+{% endblock %}
+
+{% block header %}
+    <h2>Tabela</h2>
+{% endblock %}
+
+{% block main %}
+    <div class="table-responsive">
+        <table id="myTable" class="table table-striped align-middle table-sm">
+            {% block table %}
+                Tabela
+            {% endblock %}
+        </table>
+    </div>
+
+    {% block dodajButton %}
+        Przyciski pod tabelą
+    {% endblock %}
+{% endblock %}

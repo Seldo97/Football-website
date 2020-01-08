@@ -1,0 +1,36 @@
+
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light" >
+    {% block navbar %}
+          <img class="mr-3" src='{{ url }}images/logo2.png' alt="obrazek" width="35" height="35">
+          <a class="navbar-brand" href="{{url}}">Strona główna</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            {% block navbarItem %}
+                  <li class="nav-item active">
+                    <a class="nav-link" href="{{url}}druzynaTabela">Drużyny <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{url}}zawodnikTabela">Zawodnicy</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Mecze
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="{{ url }}meczTabela/nadchodzace">Nadchodzące</a>
+                      <a class="dropdown-item" href="{{ url }}meczTabela/rozegrane">Rozegrane</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="{{url}}meczTabela">Wszystkie</a>
+                    </div>
+                  </li>
+            {% endblock %}
+            </ul>
+                <button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#loginForm">Zaloguj</button>
+          </div>
+
+    {% endblock %}
+    </nav>

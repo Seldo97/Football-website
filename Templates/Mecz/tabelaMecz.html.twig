@@ -1,0 +1,60 @@
+ {% extends 'templateTable.html.twig' %}
+
+ {% block title %}Tabela Mecz{% endblock %}
+
+ {% block header %}
+     <h2>Mecze</h2>
+ {% endblock %}
+
+
+ {% block table %}
+        <thead>
+            <tr class="thead-dark">
+                <th scope="col">#</th>
+                <th scope="col">Gospodarz</th>
+                <th scope="col">Wynik</th>
+                <th scope="col">Gość</th>
+                <th scope="col">Data</th>
+                <th scope="col">Rozegrany</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        {% for mecz in mecze %}
+        <tr>
+          <td>{{ mecz.Id }} </td>
+          <td>{{ mecz.Gospodarz }} </td>
+          {% if mecz.Rozegrany != 1 %}
+            <td><div style='width: 105px'>
+                <img src="{{ url }}{{ mecz.Glogo }}" width="33" height="40" /> - : - <img src="{{ url }}{{ mecz.Slogo }}" width="33" height="40" />
+            </div></td>
+          {% else %}
+            <td><div style='width: 105px'>
+                <img src="{{ url }}{{ mecz.Glogo }}" width="33" height="40" /> {{ mecz.Wynik }} <img src="{{ url }}{{ mecz.Slogo }}" width="33" height="40" />
+            </div></td>
+          {% endif %}
+          <td>{{ mecz.Gosc }} </td>
+          <td>{{ mecz.Data }} </td>
+          {% if mecz.Rozegrany == 1 %}
+            <td>Tak</td>
+          {% else %}
+            <td>Nie</td>
+          {% endif %}
+
+          <td class="text-right">
+              <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                <a class="btn btn-success" href="{{ url }}mecz/formularzUpdate/{{mecz.Id}}" role="button">&#8651;</a>
+                <a class="btn btn-danger" href="{{ url }}mecz/usun/{{mecz.Id}}" role="button">&#9850;</a>
+              </div>
+          </td>
+        </tr>
+        {%  endfor %}
+
+        </tbody>
+
+ {% endblock %}
+ {% block dodajButton %}
+    <a class="btn btn-info" href="{{ url }}mecz/formularzDodaj" role="button">Dodaj</a> </td>
+{% endblock %}

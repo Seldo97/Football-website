@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Kluby Piłkarskie
+{% endblock %}
+
+{% block header %}
+    <h2>Formularz</h2>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{{ url }}css/cssForm.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+{% endblock %}
+
+{% block main %}
+    <div class="row">
+        <div class="col-12 col-md-6 mt-3" id="form" style='display:none'>
+        {% block form %}
+
+            Formularz
+
+        {% endblock %}
+        </div>
+    </div>
+
+    {% block js %}
+        <!-- <script src="{{ url }}js/jquery.js"></script> -->
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="{{ url }}js/jquery.validate.js"></script>
+        <script src="{{ url }}js/additional-methods.js"></script>
+        <script type="text/javascript" src="{{ url }}js/validate.js"></script>
+        <script type="text/javascript" src="{{ url }}js/imageJS.js"></script>
+    {% endblock %}
+
+{% endblock %}

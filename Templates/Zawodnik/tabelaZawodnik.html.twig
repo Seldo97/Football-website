@@ -1,0 +1,62 @@
+ {% extends 'templateTable.html.twig' %}
+
+ {% block title %}Tabela Zawodnik{% endblock %}
+
+ {% block header %}
+     <h2>Zawodnicy</h2>
+ {% endblock %}
+
+ {% block table %}
+        <thead>
+            <tr class="thead-dark">
+                <th/>
+                <th scope="col">Imie</th>
+                <th scope="col">Nazwisko</th>
+                <th scope="col">Data urodzenia</th>
+                <th scope="col">Wzrost</th>
+                <th scope="col">Narodowość</th>
+                <th scope="col">Kontrakt do</th>
+                <th scope="col">Drużyna</th>
+                <th scope="col">Pozycja</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+        {% for Zawodnik in zawodnicy %}
+        <tr>
+          <td><img src="{{ url }}images/avatarPusty.jpg" width="35" height="35" /></td>
+          <td>{{ Zawodnik.imie }}</td>
+          <td>{{ Zawodnik.nazwisko }}</td>
+          <td>{{ Zawodnik.data_urodzenia }}</td>
+          <td>{{ Zawodnik.wzrost }}</td>
+          <td>{{ Zawodnik.narodowosc }}</td>
+          <td>{{ Zawodnik.do_kiedy_kontrakt }}</td>
+          <td><a href="{{url}}druzyna/sklad/{{Zawodnik.IdDruzyna}}">{{ Zawodnik.druzyna }}</a></td>
+          <td>{{ Zawodnik.pozycja }}</td>
+
+          <td class="text-right">
+            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                <a class="btn btn-success" href="{{ url }}zawodnik/formularzUpdate/{{Zawodnik.id_zawodnik}}" role="button">&#8651;</a>
+                <a class="btn btn-danger" href="{{ url }}zawodnik/usun/{{Zawodnik.id_zawodnik}}" role="button">&#9850;</a>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+
+        </tbody>
+ {% endblock %}
+
+ {% block dodajButton %}
+
+    {% if filtrowana == 1 %}
+       <a class="btn btn-info" href="{{ url }}druzyna/sklad/formularzDodaj/{{ id_druzyna }}" role="button">Dodaj</a>
+       <a class="btn btn-secondary" href="{{url}}zawodnikTabela" role="button">Pokaż wszystkich</a>
+    {% else %}
+       <a class="btn btn-info" href="{{ url }}zawodnik/formularzDodaj" role="button">Dodaj</a>
+    {% endif %}
+
+    <a class="btn btn-secondary" href="{{ url }}druzynaTabela" role="button">Drużyny</a>
+
+ {% endblock %}

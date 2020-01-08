@@ -1,0 +1,42 @@
+{% extends 'templateTable.html.twig' %}
+
+{% block title %}Tabela Druzyna{% endblock %}
+{% block header %}
+    <h2>Drużyny</h2>
+{% endblock %}
+
+
+    {% block table %}
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Drużyna</th>
+                <th scope="col">Liga</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for druzyna in druzyny %}
+        <tr>
+          <td>{{ druzyna.id_druzyna }}</td>
+          <td><img src="{{ url }}{{ druzyna.logo }}" width="33" height="40" />&nbsp&nbsp&nbsp {{ druzyna.nazwa }}</td>
+          <td>{{ druzyna.liga }}</td>
+
+          <td class="text-right">
+               <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                   <a class="btn btn-primary" href="{{url}}druzyna/sklad/{{druzyna.id_druzyna}}" role="button">skład</a>
+                   <a class="btn btn-success" href="{{url}}druzyna/formularzUpdate/{{druzyna.id_druzyna}}" role="button">&#8651;</a>
+                   <a class="btn btn-danger" href="{{url}}druzyna/usun/{{druzyna.id_druzyna}}" role="button">&#9850;</a>
+               </div>
+          </td>
+        </tr>
+        {%  endfor %}
+
+        </tbody>
+
+    {% endblock %}
+
+    {% block dodajButton %}
+        <a class="btn btn-info" href="{{url}}druzyna/formularzDodaj" role="button">Dodaj</a> </td>
+    {% endblock %}

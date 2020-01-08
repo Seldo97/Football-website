@@ -1,0 +1,7 @@
+form label.error, label.error {
+    color: red;
+    font-style: italic
+}
+input.error, select.error {
+    border-color:  red;
+}

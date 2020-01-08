@@ -1,0 +1,60 @@
+{% extends 'templateForm.html.twig' %}
+
+{% block title %}Tabela Mecz{% endblock %}
+
+{% block header %}
+    <h2>Dodawanie Meczu</h2>
+{% endblock %}
+
+{% block form %}
+
+    <form id="signupForm" action="{{ url }}mecz/insert" method="POST">
+
+        <div class="form-group">
+          <label for="druzyna_gospodarz">Wybierz drużynę gospodarza</label>
+            <select name="druzyna_gospodarz" class="form-control">
+                <option value="">--Wybierz drużynę--</option>
+                {% for druzyna in druzyny %}
+                  <option value={{druzyna.id_druzyna}}>"{{druzyna.nazwa}}"</option>
+                {%  endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+          <label for="druzyna_gosc">Wybierz drużynę gościa</label>
+            <select name="druzyna_gosc" class="form-control">
+                <option value="">--Wybierz drużynę--</option>
+                {% for druzyna in druzyny %}
+                  <option value={{druzyna.id_druzyna}}>"{{druzyna.nazwa}}"</option>
+                {%  endfor %}
+            </select>
+        </div>
+      <div class="form-group">
+        <label for="data">Data spotkania</label>
+        <input type="text" class="form-control" id="data" name="data" maxlength="10" placeholder="yyyy-mm-dd">
+      </div>
+      <div class="form-group">
+        <label for="godzina">Godzina ropoczęcia</label>
+        <input type="time" class="form-control" id="godzina" name="godzina" >
+      </div>
+      <div class="custom-control custom-checkbox my-1 mr-sm-2">
+          <input type="checkbox" class="custom-control-input" id="rozegrany" name="rozegrany" value="1">
+          <label class="custom-control-label" for="rozegrany">Rozegrany</label>
+      </div>
+      <div id="wynik" style="display:none" class="mt-2">
+          <div class="form-group">
+            <label for="wynik_gospodarz">Wynik gospodarz</label>
+            <input type="number" class="form-control" id="wynik_gospodarz" name="wynik_gospodarz" value="" >
+          </div>
+          <div class="form-group">
+            <label for="wynik_gosc">Wynik gość</label>
+            <input type="number" class="form-control" id="wynik_gosc" name="wynik_gosc"  >
+          </div>
+      </div>
+
+      <br/>
+      <button type="submit" class="btn btn-info">Dodaj</button>
+
+      <input type="hidden" id="prevUrl" name="prevUrl" value="{{ prevUrl }}" />
+    </form>
+
+{% endblock %}
