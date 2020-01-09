@@ -1,4 +1,5 @@
 // validate signup form on keyup and submit
+$(document).ready(function(){
     $(function() {
 
         $( "#data_urodzenia" ).datepicker({
@@ -168,3 +169,4 @@
                 $('#wynik_gospodarz').val('');
             }
         });
+});
