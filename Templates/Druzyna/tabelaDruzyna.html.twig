@@ -26,8 +26,10 @@
           <td class="text-right">
                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                    <a class="btn btn-primary" href="{{url}}druzyna/sklad/{{druzyna.id_druzyna}}" role="button">skład</a>
-                   <button class="btn btn-success edit_data" url="{{url}}druzyna/formularzUpdateModal/{{druzyna.id_druzyna}}" role="button">&#8651;</button>
-                   <a class="btn btn-danger" href="{{url}}druzyna/usun/{{druzyna.id_druzyna}}" role="button">&#9850;</a>
+                   {% if sesja.id_uprawnienia == 1 %}
+                        <button class="btn btn-success edit_data" url="{{url}}druzyna/formularzUpdateModal/{{druzyna.id_druzyna}}" role="button">&#8651;</button>
+                        <a class="btn btn-danger" href="{{url}}druzyna/usun/{{druzyna.id_druzyna}}" role="button">&#9850;</a>
+                   {% endif %}
                </div>
           </td>
         </tr>

@@ -47,6 +47,13 @@
           self::$router->map('GET','mecz/usun/[i:id]', array('controller' =>'Mecz', 'action' => 'delete'), 'meczaUsun');
           self::$router->map('GET','mecz/formularzUpdateModal/[i:id]', array('controller' =>'Mecz', 'action' => 'createModalForm'), 'meczFormularzUpdateModal');
 
+          //uzytkownik
+          self::$router->map('GET','uzytkownik/registerForm', array('controller' =>'Rejestracja', 'action' => 'showFormRegister'), 'showFormRegister');
+          self::$router->map('POST','uzytkownik/zarejestruj', array('controller' =>'Rejestracja', 'action' => 'registerParticipant'), 'registerParticipant');
+          self::$router->map('POST','uzytkownik/zaloguj', array('controller' =>'Uzytkownik', 'action' => 'login'), 'login');
+          self::$router->map('GET','uzytkownik/loginForm', array('controller' =>'Uzytkownik', 'action' => 'zalogujForm'), 'zalogujForm');
+          self::$router->map('GET','uzytkownik/wyloguj', array('controller' =>'Uzytkownik', 'action' => 'logout'), 'logout');
+
         }
         return self::$router;
 

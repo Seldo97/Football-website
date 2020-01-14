@@ -11,6 +11,8 @@ final class Main extends Controller
 
     public function __construct(){
 
+        // Inicjalizacja sesji anonimowej
+        \Tools\Session::initialize();
         //ustawienie routera (wszytskie adnotacje w klasie Tools/Router)
         $router = \Tools\Router::getRouter();
         //dopasowanie
@@ -29,13 +31,25 @@ final class Main extends Controller
             }
             $appController = new $fullController();
 
-            // Sprawdzamy, czy akcja kontrolera istnieje
-            if (!method_exists($appController, $action)) {
-                throw new \Exceptions\Application();
+            if (\Tools\Access::islogin() !== true)
+            {   // Logowanie do systemu lub rejestracja
+                if ($this->isAccessible($controller,$action))
+                {
+                    $result = $appController->$action();
+                }
+                else
+                {
+                    $this->redirect('uzytkownik/loginForm');
+                    //$showPage = $appController->$action($id);
+                }
             }
-            // Uruchamiamy akcję kontrolera
-
-            $result = $appController->$action($id);
+            else
+            {   // Sprawdzamy, czy akcja kontrolera istnieje
+                if (!\method_exists($appController, $action))
+                    throw new \Exceptions\Application();
+                // Uruchamiamy akcję kontrolera
+                $result = $appController->$action($id);
+            }
 
             //Wyświetlenie strony
             echo $result;
@@ -52,6 +66,27 @@ final class Main extends Controller
             $this->redirect('404.html');
         }
 
+    }
+
+    private function isAccessible($controller, $action)
+    {
+        $allowed_controllers = array(
+            'Index', 'Druzyna', 'Uzytkownik', 'Rejestracja'
+        );
+
+        $allowed_actions = array(
+            //strona glowna(Index)
+            'home',
+            //Druzyna
+            'showView',
+            //Logowanie
+            'zalogujForm', 'login',
+            //Rejestracja
+            'showFormRegister', 'registerParticipant'
+
+        );
+
+        return in_array($controller, $allowed_controllers) && in_array($action, $allowed_actions);
     }
 
 }

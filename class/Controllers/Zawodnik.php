@@ -29,7 +29,8 @@ class Zawodnik extends Controller
                                     'url' => $this->url,
                                     'pozycje' =>  $danePozycja,
                                     'druzyny' => $daneDruzyna,
-                                    'prevUrl' => $_SERVER['HTTP_REFERER'] ] );
+                                    'prevUrl' => $_SERVER['HTTP_REFERER'],
+                                    'sesja' => $_SESSION ] );
 
     }
 
@@ -45,7 +46,8 @@ class Zawodnik extends Controller
                                     'url' => $this->url,
                                     'pozycje' =>  $danePozycja,
                                     'druzyny' => $daneDruzyna,
-                                    'prevUrl' => $_SERVER['HTTP_REFERER'] ] );
+                                    'prevUrl' => $_SERVER['HTTP_REFERER'],
+                                    'sesja' => $_SESSION ] );
 
     }
 
@@ -57,7 +59,8 @@ class Zawodnik extends Controller
                                     'url' => $this->url,
                                     'pozycje' =>  $danePozycja,
                                     'druzyny' => $daneDruzyna,
-                                    'prevUrl' => $_SERVER['HTTP_REFERER'] ]);
+                                    'prevUrl' => $_SERVER['HTTP_REFERER'],
+                                    'sesja' => $_SESSION ]);
 
     }
 
@@ -72,7 +75,8 @@ class Zawodnik extends Controller
         $daneZawodnik = $this->model->showView();
         return $this->twig->render('Zawodnik/tabelaZawodnik.html.twig', [
                                                                         'zawodnicy' =>$daneZawodnik,
-                                                                        'url' => $this->url ]);
+                                                                        'url' => $this->url,
+                                                                        'sesja' => $_SESSION ]);
     }
 
     public function showSklad($id_druzyna)
@@ -83,7 +87,8 @@ class Zawodnik extends Controller
                                                                         'zawodnicy' =>$daneZawodnik,
                                                                         'url' => $this->url,
                                                                         'filtrowana' => 1,
-                                                                        'id_druzyna' => $id_druzyna ]);
+                                                                        'id_druzyna' => $id_druzyna,
+                                                                        'sesja' => $_SESSION ]);
     }
 
     public function dodajDoSkladu($id_druzyna)
@@ -96,7 +101,8 @@ class Zawodnik extends Controller
                                     'pozycje' =>  $danePozycja,
                                     'druzyny' => $daneDruzyna[0],
                                     'id_druzyna' => $id_druzyna,
-                                    'prevUrl' => $_SERVER['HTTP_REFERER'] ]);
+                                    'prevUrl' => $_SERVER['HTTP_REFERER'],
+                                    'sesja' => $_SESSION ]);
     }
 
     public function delete($id)

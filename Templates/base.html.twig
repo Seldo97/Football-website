@@ -9,6 +9,7 @@
         <!-- JS i CSS niezbędny do działania strony -->
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.20/datatables.min.css"/>
         <link rel="stylesheet" type="text/css" href="{{ url }}/css/cssGlobal.css"/>
+        <!-- <link rel="stylesheet" href="{{url}}css/mdb.min.css"> -->
         <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.20/datatables.min.js"></script>
         <script type="text/javascript" src="{{ url }}js/siteEffects.js"></script>
         <!-- ______________________________________ -->
@@ -31,6 +32,7 @@
 
         {% include 'banner.html.twig' %}
         {% include 'navBar.html.twig' %}
+        {% include 'loginForm.html.twig' %}
 
         <div class="container pt-4 pb-4" style='display:none;'>
 
@@ -42,7 +44,7 @@
             {% endblock %}
             </header>
 
-            <div class="row" style='min-height: 66vh;'>
+            <div class="row" >
                 <main class="col-12 mt-1">
                 {% block main %}
 

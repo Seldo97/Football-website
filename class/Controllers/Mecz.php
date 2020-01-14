@@ -24,7 +24,8 @@ class Mecz extends Controller
                                     'id' => $id,'mecze' =>$daneMecz[0],
                                     'druzyny' => $daneDruzyna,
                                     'url' => $this->url,
-                                    'prevUrl' => $_SERVER['HTTP_REFERER']]);
+                                    'prevUrl' => $_SERVER['HTTP_REFERER'],
+                                    'sesja' => $_SESSION]);
 
     }
 
@@ -36,7 +37,8 @@ class Mecz extends Controller
                                    'id' => $id,'mecze' =>$daneMecz[0],
                                    'druzyny' => $daneDruzyna,
                                    'url' => $this->url,
-                                   'prevUrl' => $_SERVER['HTTP_REFERER']]);
+                                   'prevUrl' => $_SERVER['HTTP_REFERER'],
+                                   'sesja' => $_SESSION]);
 
    }
 
@@ -47,7 +49,8 @@ class Mecz extends Controller
          return $this->twig->render( 'Mecz/formMeczInsert.html.twig', [
                                     'druzyny' => $daneDruzyna,
                                     'url' => $this->url,
-                                    'prevUrl' => $_SERVER['HTTP_REFERER'] ]) ;
+                                    'prevUrl' => $_SERVER['HTTP_REFERER'],
+                                    'sesja' => $_SESSION ]) ;
 
     }
 
@@ -57,7 +60,8 @@ class Mecz extends Controller
         $daneMecz = $this->model->showView();
         return $this->twig->render( 'Mecz/tabelaMecz.html.twig', [
                                     'mecze' => $daneMecz,
-                                    'url' => $this->url ] );
+                                    'url' => $this->url,
+                                    'sesja' => $_SESSION ] );
 
     }
 
@@ -67,7 +71,8 @@ class Mecz extends Controller
         $daneMecz = $this->model->showView($filtr);
         return $this->twig->render( 'Mecz/tabelaMecz.html.twig', [
                                     'mecze' => $daneMecz,
-                                    'url' => $this->url ] );
+                                    'url' => $this->url,
+                                    'sesja' => $_SESSION ] );
     }
 
     public function showRozegrane()
@@ -76,7 +81,8 @@ class Mecz extends Controller
         $daneMecz = $this->model->showView($filtr);
         return $this->twig->render( 'Mecz/tabelaMecz.html.twig', [
                                     'mecze' => $daneMecz,
-                                    'url' => $this->url ] );
+                                    'url' => $this->url,
+                                    'sesja' => $_SESSION ] );
     }
 
     public function delete($id)

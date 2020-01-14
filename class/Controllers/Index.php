@@ -12,6 +12,8 @@ class Index extends Controller
 
     public function home()
     {
-        return $this->twig->render( 'index.html.twig', ['url' => $this->url ]);
+        return $this->twig->render( 'index.html.twig', [
+                                    'url' => $this->url,
+                                    'sesja' => $_SESSION ]);
     }
 }

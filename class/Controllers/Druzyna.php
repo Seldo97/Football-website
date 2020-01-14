@@ -26,7 +26,11 @@ class Druzyna extends Controller
         $daneLiga = $this->liga->showAll();
 
          return $this->twig->render( 'Druzyna/formDruzynaUpdate.html.twig', [
-                                    'id' => $id,'druzyny' =>$daneDruzyna[0], 'ligi' => $daneLiga, 'url' => $this->url ]);
+                                    'id' => $id,
+                                    'druzyny' =>$daneDruzyna[0],
+                                    'ligi' => $daneLiga,
+                                    'url' => $this->url,
+                                    'sesja' => $_SESSION]);
     }
 
     public function createModalForm($id){
@@ -34,14 +38,21 @@ class Druzyna extends Controller
         $daneLiga = $this->liga->showAll();
 
          return $this->twig->render( 'Druzyna/formDruzynaUpdateModal.html.twig', [
-                                    'id' => $id,'druzyny' =>$daneDruzyna[0], 'ligi' => $daneLiga, 'url' => $this->url ]);
+                                    'id' => $id,
+                                    'druzyny' =>$daneDruzyna[0],
+                                    'ligi' => $daneLiga,
+                                    'url' => $this->url,
+                                    'sesja' => $_SESSION ]);
     }
 
     // do INSERTA //
     public function insertForm(){
         $daneLiga = $this->liga->showAll();
 
-         return $this->twig->render( 'Druzyna/formDruzynaInsert.html.twig', ['ligi' => $daneLiga, 'url' => $this->url] ) ;
+         return $this->twig->render( 'Druzyna/formDruzynaInsert.html.twig', [
+                                    'ligi' => $daneLiga,
+                                    'url' => $this->url,
+                                    'sesja' => $_SESSION ]) ;
     }
 
     public function showAll()
@@ -53,9 +64,13 @@ class Druzyna extends Controller
 
     public function showView()
     {
+        d($_SESSION);
         $daneDruzyna = $this->model->showView();
         return $this->twig->render( 'Druzyna/tabelaDruzyna.html.twig', [
-                                    'name' => "Druzyna",'druzyny' =>$daneDruzyna, 'url' => $this->url] );
+                                    'name' => "Druzyna",
+                                    'druzyny' =>$daneDruzyna,
+                                    'url' => $this->url,
+                                    'sesja' => $_SESSION ]);
     }
 
     // public function selectOneById($id)

@@ -1,5 +1,8 @@
 <footer id="sticky-footer" class="py-3 text-secondary position-sticky">
     <div class="container text-center " >
+        {% if sesja.login is defined %}
+            Witaj {{ sesja.login }}! <br/>
+        {% endif %}
         <small>2019 Copyright &copy; Marcin Olek</small>
     </div>
 </footer>
