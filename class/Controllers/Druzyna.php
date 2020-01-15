@@ -65,6 +65,7 @@ class Druzyna extends Controller
     public function showView()
     {
         //d($_SESSION);
+        //\Tools\Messages::clearMessages();
         $daneDruzyna = $this->model->showView();
         return $this->twig->render( 'Druzyna/tabelaDruzyna.html.twig', [
                                     'name' => "Druzyna",
@@ -88,7 +89,7 @@ class Druzyna extends Controller
     public function delete($id)
     {
         $this->model->deleteOneById($id);
-
+        \Tools\Messages::setSuccessMsg("Wiersz o id $id został usunięty pomyślnie.");
         $this->redirect("druzynaTabela");
     }
 
@@ -112,10 +113,11 @@ class Druzyna extends Controller
 
             $this->model->updateById($id, $logo,$nazwa,$id_liga);
 
+            \Tools\Messages::setSuccessMsg("Wiersz o id $id został zaktualizowany pomyślnie.");
             $this->redirect("druzynaTabela");
 
         }else{
-
+            \Tools\Messages::setFailMsg("Wystąpił problem podczas aktualizacji wiersza.");
             $this->redirect("druzyna/formularzUpdate/".$_POST["id_druzyna"]);
 
             }
@@ -139,10 +141,11 @@ class Druzyna extends Controller
 
             move_uploaded_file($_FILES["logo"]["tmp_name"], $logo);
 
+            \Tools\Messages::setSuccessMsg("Drużyna '$nazwa' została dodana pomyślnie.");
             $this->redirect("druzynaTabela");
 
         }else{
-
+            \Tools\Messages::setFailMsg("Wystąpił problem podczas dodawania drużyny.");
             $this->redirect("druzyna/formularzDodaj");
         }
     }

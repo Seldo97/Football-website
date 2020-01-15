@@ -88,7 +88,7 @@ class Mecz extends Controller
     public function delete($id)
     {
         $this->model->deleteOneById($id);
-
+        \Tools\Messages::setSuccessMsg("Wiersz o id $id został usunięty pomyślnie.");
         $this->redirect($_SERVER['HTTP_REFERER']);
 
     }
@@ -121,11 +121,11 @@ class Mecz extends Controller
             $rozegrany         = $_POST["rozegrany"];
 
             $this->model->updateById($id_mecz, $druzyna_gospodarz, $druzyna_gosc, $wynik_gospodarz, $wynik_gosc, $data, $godzina, $rozegrany);
-
+            \Tools\Messages::setSuccessMsg("Wiersz o id $id został zaktualizowany pomyślnie.");
             $this->redirect($_POST["prevUrl"]);
 
         }else{
-
+            \Tools\Messages::setFailMsg("Wystąpił błąd podczas edycji wiersza.");
             $this->redirect("mecz/formularzUpdate/".$_POST["id_mecz"]);
 
             }
@@ -159,10 +159,11 @@ class Mecz extends Controller
             $this->model->insertRow($druzyna_gospodarz, $druzyna_gosc, $wynik_gospodarz,
                                     $wynik_gosc, $data, $godzina, $rozegrany);
 
+            \Tools\Messages::setSuccessMsg("Mecz został dodany pomyślnie.");
             $this->redirect($_POST["prevUrl"]);
 
         }else{
-
+            \Tools\Messages::setFailMsg("Wystąpił błąd podczas dodawania meczu.");
             $this->redirect("mecz/formularzDodaj");
 
         }

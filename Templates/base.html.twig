@@ -36,6 +36,22 @@
 
         <div class="container pt-4 pb-4" style='display:none;'>
 
+            {% if sesja.success_msg is defined %}
+                <div class="alert alert-success" role="alert" style='display:none;'>
+                  {{ sesja.success_msg }}
+                </div>
+            {% endif %}
+            {% if sesja.fail_msg is defined %}
+                <div class="alert alert-danger" role="alert" style='display:none;'>
+                  {{ sesja.fail_msg }}
+                </div>
+            {% endif %}
+            {% if sesja.info_msg is defined %}
+                <div class="alert alert-info" role="alert" style='display:none;'>
+                  {{ sesja.info_msg }}
+                </div>
+            {% endif %}
+
             <header class="mb-1">
             {% block header %}
 

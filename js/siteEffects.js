@@ -12,3 +12,7 @@ $(document).ready(function(){
 $(document).click(function() {
   $(".dropdown-menu").hide(); //click came from somewhere else
 });
+
+$(document).ready(function(){
+    $(".alert").slideToggle(500).delay(3500).slideToggle(500);
+});

@@ -108,7 +108,7 @@ class Zawodnik extends Controller
     public function delete($id)
     {
         $this->model->deleteOneById($id);
-
+        \Tools\Messages::setSuccessMsg("Pomyślnie usunięto wierz.");
         $this->redirect($_SERVER['HTTP_REFERER']);
     }
 
@@ -148,10 +148,11 @@ class Zawodnik extends Controller
             $this->model->updateById($id, $imie, $nazwisko, $data_urodzenia, $wzrost, $narodowosc,
                                         $do_kiedy_kontrakt, $id_druzyna, $id_pozycja);
 
+            \Tools\Messages::setSuccessMsg("Pomyślnie zaktualizowano wiersz.");
             $this->redirect($_POST["prevUrl"]);
 
         }else{
-
+            \Tools\Messages::setFailMsg("Wystąpił problem podczas aktualizacji wiersza.");
             $this->redirect("zawodnik/formularzUpdate/".$_POST["id_zawodnik"]);
 
         }
@@ -189,10 +190,12 @@ class Zawodnik extends Controller
             $this->model->insertRow($imie, $nazwisko, $data_urodzenia, $wzrost, $narodowosc,
                                         $do_kiedy_kontrakt, $id_druzyna, $id_pozycja);
 
+
+            \Tools\Messages::setSuccessMsg("Pomyślnie dodano zawodnika $imie $nazwisko.");
             $this->redirect($_POST["prevUrl"]);
 
         }else{
-
+            \Tools\Messages::setFailMsg("Wystąpił problem podczas dodawania zawodnika.");
             $this->redirect("zawodnik/formularzDodaj");
 
         }

@@ -16,7 +16,7 @@ class Uzytkownik extends Controller
     // pokazuje form logowania
     public function zalogujForm()
     {
-        $_SERVER['HTTP_REFERER'] = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null;
+        //$_SESSION['prevUrl'] = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
         return $this->twig->render(
             'Uzytkownik/logowanie.html.twig',
             [
@@ -35,9 +35,13 @@ class Uzytkownik extends Controller
         {
             //d($_POST['login']);
             //d($_POST['haslo']);
-			if( $model->login($_POST['login'], $_POST['haslo']) )
+            $login = $_POST['login'];
+			if( $model->login($_POST['login'], $_POST['haslo']) ){
+                \Tools\Messages::setInfoMsg("Zalogowano pomyślnie. Witaj $login!");
                 $this->redirect('');
+            }
 		}
+        \Tools\Messages::setFailMsg('Niepoprawne dane logowania.');
 		$this->redirect('uzytkownik/loginForm');
 	}
 
@@ -46,6 +50,7 @@ class Uzytkownik extends Controller
     {
         $model = new \Models\Uzytkownik();
 		$model->logout();
-		$this->redirect('');
+        \Tools\Messages::setInfoMsg('Zostałeś wylogowany pomyślnie.');
+		$this->redirect($_SERVER['HTTP_REFERER']);
 	}
 }

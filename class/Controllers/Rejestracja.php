@@ -26,6 +26,7 @@ class Rejestracja extends Controller
         {
             $model_Rejestracja = new \Models\Rejestracja();
             $model_Rejestracja->registerParticipant();
+            \Tools\Messages::setSuccessMsg("Zostałeś zarejestrowany pomyślnie. Teraz możesz zalogować się na swoje konto.");
             $this->redirect('uzytkownik/loginForm');
         }
         catch(\Exception $e)

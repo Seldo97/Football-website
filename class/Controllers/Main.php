@@ -39,6 +39,7 @@ final class Main extends Controller
                 }
                 else
                 {
+                    \Tools\Messages::setInfoMsg("Musisz być zalogowany, aby zobaczyć zawartość tej strony.");
                     $this->redirect('uzytkownik/loginForm');
                     //$showPage = $appController->$action($id);
                 }
@@ -53,6 +54,7 @@ final class Main extends Controller
                         $result = $appController->$action($id);
                     }
                     else{
+                        \Tools\Messages::setInfoMsg("Nie posiadasz odpowiednich uprawnień.");
                         $this->redirect($_SERVER['HTTP_REFERER']);
                         //$showPage = $appController->$action($id);
                     }
@@ -65,6 +67,8 @@ final class Main extends Controller
             //Wyświetlenie strony
             echo $result;
 
+            //Czyszczenie komunikatów
+            \Tools\Messages::clearMessages();
 
 
         } catch(\Exceptions\DatabaseConnection $e) {
