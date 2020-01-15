@@ -29,6 +29,7 @@
                   </li>
             {% endblock %}
             </ul>
+            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                 {% if sesja.login is not defined %}
                     <a class="btn btn-dark btn-sm" href="{{ url }}uzytkownik/registerForm" role="button">Zarejestruj</a>
                     <a class="btn btn-dark btn-sm" href="{{ url }}uzytkownik/loginForm" role="button">Zaloguj</a>
@@ -36,6 +37,7 @@
                 {% else %}
                     <a class="btn btn-dark btn-sm" href="{{ url }}uzytkownik/wyloguj" role="button">Wyloguj</a>
                 {% endif %}
+            </div>
           </div>
 
     {% endblock %}
