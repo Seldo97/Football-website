@@ -40,5 +40,7 @@
     {% endblock %}
 
     {% block dodajButton %}
-        <a class="btn btn-info" href="{{url}}druzyna/formularzDodaj" role="button">Dodaj</a> </td>
+        {% if sesja.id_uprawnienia == 1 %}
+            <a class="btn btn-info" href="{{url}}druzyna/formularzDodaj" role="button">Dodaj</a>
+        {% endif %}
     {% endblock %}

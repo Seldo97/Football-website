@@ -26,7 +26,7 @@ class Rejestracja extends Controller
         {
             $model_Rejestracja = new \Models\Rejestracja();
             $model_Rejestracja->registerParticipant();
-            $this->redirect('');
+            $this->redirect('uzytkownik/loginForm');
         }
         catch(\Exception $e)
         {

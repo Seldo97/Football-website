@@ -64,7 +64,7 @@ class Druzyna extends Controller
 
     public function showView()
     {
-        d($_SESSION);
+        //d($_SESSION);
         $daneDruzyna = $this->model->showView();
         return $this->twig->render( 'Druzyna/tabelaDruzyna.html.twig', [
                                     'name' => "Druzyna",

@@ -35,7 +35,7 @@ final class Main extends Controller
             {   // Logowanie do systemu lub rejestracja
                 if ($this->isAccessible($controller,$action))
                 {
-                    $result = $appController->$action();
+                    $result = $appController->$action($id);
                 }
                 else
                 {
@@ -48,7 +48,18 @@ final class Main extends Controller
                 if (!\method_exists($appController, $action))
                     throw new \Exceptions\Application();
                 // Uruchamiamy akcję kontrolera
-                $result = $appController->$action($id);
+                if ($_SESSION['id_uprawnienia'] != 1){
+                    if ($this->isAuthorised($controller,$action)){
+                        $result = $appController->$action($id);
+                    }
+                    else{
+                        $this->redirect($_SERVER['HTTP_REFERER']);
+                        //$showPage = $appController->$action($id);
+                    }
+                }else{
+                    $result = $appController->$action($id);
+                }
+
             }
 
             //Wyświetlenie strony
@@ -68,7 +79,7 @@ final class Main extends Controller
 
     }
 
-    private function isAccessible($controller, $action)
+    private function isAccessible($controller, $action, $uprawnienia = null)
     {
         $allowed_controllers = array(
             'Index', 'Druzyna', 'Uzytkownik', 'Rejestracja'
@@ -84,6 +95,30 @@ final class Main extends Controller
             //Rejestracja
             'showFormRegister', 'registerParticipant'
 
+        );
+
+        return in_array($controller, $allowed_controllers) && in_array($action, $allowed_actions);
+    }
+
+    private function isAuthorised($controller, $action)
+    {
+        $allowed_controllers = array(
+            'Index', 'Druzyna', 'Uzytkownik', 'Rejestracja', 'Mecz', 'Zawodnik'
+        );
+
+        $allowed_actions = array(
+            //strona glowna(Index)
+            'home',
+            //Druzyna
+            'showView',
+            //Logowanie
+            'zalogujForm', 'login', 'logout',
+            //Rejestracja
+            'showFormRegister', 'registerParticipant',
+            //Mecz
+            'showNadchodzace', 'showRozegrane',
+            //Zawodnik
+            'showSklad'
         );
 
         return in_array($controller, $allowed_controllers) && in_array($action, $allowed_actions);
