@@ -24,10 +24,21 @@ class Rejestracja extends Controller
     {
         try
         {
-            $model_Rejestracja = new \Models\Rejestracja();
-            $model_Rejestracja->registerParticipant();
-            \Tools\Messages::setSuccessMsg("Zostałeś zarejestrowany pomyślnie. Teraz możesz zalogować się na swoje konto.");
-            $this->redirect('uzytkownik/loginForm');
+            if(isset($_POST["login"])
+                && isset($_POST["haslo"])
+                && isset($_POST["email"])
+                && (trim($_POST["login"]!=""))
+                && (trim($_POST["haslo"]!=""))
+                && (trim($_POST["email"]!=""))
+            ){
+                $model_Rejestracja = new \Models\Rejestracja();
+                $model_Rejestracja->registerParticipant();
+                \Tools\Messages::setSuccessMsg("Zostałeś zarejestrowany pomyślnie. Teraz możesz zalogować się na swoje konto.");
+                $this->redirect('uzytkownik/loginForm');
+            }else{
+                \Tools\Messages::setFailMsg("Wystąpił problem podczas rejestracji, spróbuj ponownie.");
+                $this->redirect('uzytkownik/registerForm');
+            }
         }
         catch(\Exception $e)
         {
