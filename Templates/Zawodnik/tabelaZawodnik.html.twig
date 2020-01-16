@@ -57,7 +57,9 @@
        <a class="btn btn-info" href="{{ url }}druzyna/sklad/formularzDodaj/{{ id_druzyna }}" role="button">Dodaj</a>
        <a class="btn btn-secondary" href="{{url}}zawodnikTabela" role="button">Pokaż wszystkich</a>
     {% else %}
-       <a class="btn btn-info" href="{{ url }}zawodnik/formularzDodaj" role="button">Dodaj</a>
+        {% if sesja.id_uprawnienia == 1 %}
+            <a class="btn btn-info" href="{{ url }}zawodnik/formularzDodaj" role="button">Dodaj</a>
+        {% endif %}
     {% endif %}
 
     <a class="btn btn-secondary" href="{{ url }}druzynaTabela" role="button">Drużyny</a>
