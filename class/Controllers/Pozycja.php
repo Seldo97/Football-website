@@ -10,6 +10,7 @@ class Pozycja extends Controller
     {
         $this->model = new \Models\Pozycja;
         parent::__construct($this->model);
+        //testgit
     }
 
 }
