@@ -160,13 +160,13 @@ $(document).ready(function(){
             wynik_gospodarz : "Jeżeli mecz został rozegrany, podaj wynik"
 			}
 		});
+});
 
-        $('#rozegrany').click(function() {
-            $("#wynik").slideToggle();
-            if ($('#rozegrany').not(':checked').length) {
-                //$(this).prop('checked',false);
-                $('#wynik_gosc').val('');
-                $('#wynik_gospodarz').val('');
-            }
-        });
+$('#rozegrany').click(function() {
+    $("#wynik").slideToggle();
+    if ($('#rozegrany').not(':checked').length) {
+        //$(this).prop('checked',false);
+        $('#wynik_gosc').val('');
+        $('#wynik_gospodarz').val('');
+    }
 });
