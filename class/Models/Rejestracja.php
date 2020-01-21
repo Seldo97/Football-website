@@ -42,8 +42,7 @@ class Rejestracja extends DatabaseConnection
         catch(\PDOException $e)
         {
             $pdo->rollback();
-            echo 'Błąd zapytania: ' . $e->getMessage();
-            d($e);
+            return 0;
         }
     }
 }

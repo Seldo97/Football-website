@@ -32,9 +32,13 @@ class Rejestracja extends Controller
                 && (trim($_POST["email"]!=""))
             ){
                 $model_Rejestracja = new \Models\Rejestracja();
-                $model_Rejestracja->registerParticipant();
+                if($model_Rejestracja->registerParticipant() == 1){
                 \Tools\Messages::setSuccessMsg("Zostałeś zarejestrowany pomyślnie. Teraz możesz zalogować się na swoje konto.");
                 $this->redirect('uzytkownik/loginForm');
+            }else{
+                \Tools\Messages::setFailMsg("Wystąpił problem podczas rejestracji, spróbuj ponownie.");
+                $this->redirect('uzytkownik/registerForm');
+            }
             }else{
                 \Tools\Messages::setFailMsg("Wystąpił problem podczas rejestracji, spróbuj ponownie.");
                 $this->redirect('uzytkownik/registerForm');
