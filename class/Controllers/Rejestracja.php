@@ -36,7 +36,7 @@ class Rejestracja extends Controller
                 \Tools\Messages::setSuccessMsg("Zostałeś zarejestrowany pomyślnie. Teraz możesz zalogować się na swoje konto.");
                 $this->redirect('uzytkownik/loginForm');
             }else{
-                \Tools\Messages::setFailMsg("Wystąpił problem podczas rejestracji, spróbuj ponownie.");
+                \Tools\Messages::setFailMsg("Użytkownik o podanym adresie e-mail lub nazwie już istnieje.");
                 $this->redirect('uzytkownik/registerForm');
             }
             }else{
