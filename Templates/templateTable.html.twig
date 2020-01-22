@@ -9,32 +9,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="{{ url }}js/jquery.validate.js"></script>
     <script src="{{ url }}js/additional-methods.js"></script>
-    <script>
-        $(document).ready(function(){
-            $(document).on('click', '.edit_data', function() {
-                var id_druzyna = $(this).attr("id");
-                var url_bezp = $(this).attr("url");
-                var url = url_bezp;
-                //alert(url_bezp);
-                $.when(
-                    $.ajax({
-                        type: 'GET',
-                        url: url,
-                        success: function(response){
-                            res=response;
-                            success=true;
-                        },
-                        error:function(){
-                            //handle error
-                        },
-                    })).then(function(){
-                        if(success){
-                            $("#myModal").html(res).modal("show");
-                        }
-                });
-            });
-        });
-    </script>
+
     <!-- <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.10.20/api/fnFilterClear.js"></script> -->
 {% endblock %}
 
